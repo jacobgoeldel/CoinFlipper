@@ -16,7 +16,8 @@ public class Program {
 			System.out.println("--------------");
 			System.out.println("1. Flip Coin");
 			System.out.println("2. Roll Dice");
-			System.out.println("3. Quit");
+			System.out.println("3. Print Statistics");
+			System.out.println("4. Quit");
 			
 			switch(scan.nextInt()) {
 			
@@ -30,7 +31,11 @@ public class Program {
 				dice.printResult();
 				break;
 				
-			case 3: // quit
+			case 3: // print statistics
+				coin.printResults();
+				break;
+				
+			case 4: // quit
 				quit = true;
 				break;
 				

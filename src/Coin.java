@@ -29,8 +29,13 @@ public class Coin {
 		}
 	}
 	
-	public void printResults() {
+	public void printStatistics() {
 		int totalRolls = sideStatistics[0] + sideStatistics[1];
+		
+		// no need to print statistics if it was never flipped
+		if(totalRolls == 0)
+			return;
+		
 		float headsPercent = (float)sideStatistics[0] / (float)totalRolls;
 		float tailsPercent = (float)sideStatistics[1] / (float)totalRolls;
 		

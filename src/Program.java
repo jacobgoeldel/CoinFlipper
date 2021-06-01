@@ -32,7 +32,8 @@ public class Program {
 				break;
 				
 			case 3: // print statistics
-				coin.printResults();
+				coin.printStatistics();
+				dice.printStatistics();
 				break;
 				
 			case 4: // quit

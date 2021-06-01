@@ -6,6 +6,7 @@ public class Program {
 		
 		Scanner scan = new Scanner(System.in);
 		Coin coin = new Coin();
+		Dice dice = new Dice();
 		
 		boolean quit = false;
 		
@@ -14,7 +15,8 @@ public class Program {
 			System.out.println(" Coin Flipper ");
 			System.out.println("--------------");
 			System.out.println("1. Flip Coin");
-			System.out.println("2. Quit");
+			System.out.println("2. Roll Dice");
+			System.out.println("3. Quit");
 			
 			switch(scan.nextInt()) {
 			
@@ -23,7 +25,12 @@ public class Program {
 				coin.printSide();
 				break;
 				
-			case 2: // quit
+			case 2: // roll dice
+				dice.roll();
+				dice.printResult();
+				break;
+				
+			case 3: // quit
 				quit = true;
 				break;
 				

@@ -18,29 +18,23 @@ public class Coin {
 		sideStatistics[randomSideIndex] += 1;
 	}
 	
-	public void printSide() {
-		switch (currentSide) {
-		case HEADS:
-			System.out.println("The coin is on heads.");
-			break;
-		case TAILS:
-			System.out.println("The coin is on tails.");
-			break;
-		}
+	public String getSide() {
+		return String.format("The coin is on %s.\n", currentSide == CoinSides.HEADS ? "heads" : "Tails");
 	}
 	
-	public void printStatistics() {
+	public String getStatistics() {
 		int totalRolls = sideStatistics[0] + sideStatistics[1];
 		
-		// no need to print statistics if it was never flipped
 		if(totalRolls == 0)
-			return;
+			return "Coin has not been flipped";
 		
 		float headsPercent = (float)sideStatistics[0] / (float)totalRolls;
 		float tailsPercent = (float)sideStatistics[1] / (float)totalRolls;
 		
-		System.out.println("--Coin Statistics--");
-		System.out.printf("Rolled Heads %d times. (%6.2f%%)\n", sideStatistics[0], headsPercent * 100.0f);
-		System.out.printf("Rolled Tails %d times. (%6.2f%%)\n", sideStatistics[1], tailsPercent * 100.0f);
+		String stats = "--Coin Statistics--\n";
+		stats += String.format("Rolled Heads %d times. (%6.2f%%)\n", sideStatistics[0], headsPercent * 100.0f);
+		stats += String.format("Rolled Tails %d times. (%6.2f%%)\n", sideStatistics[1], tailsPercent * 100.0f);
+		
+		return stats;
 	}
 }

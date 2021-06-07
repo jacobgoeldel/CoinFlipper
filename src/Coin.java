@@ -26,7 +26,7 @@ public class Coin {
 		int totalRolls = sideStatistics[0] + sideStatistics[1];
 		
 		if(totalRolls == 0)
-			return "Coin has not been flipped";
+			return "Coin has not been flipped\n";
 		
 		float headsPercent = (float)sideStatistics[0] / (float)totalRolls;
 		float tailsPercent = (float)sideStatistics[1] / (float)totalRolls;

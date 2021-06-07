@@ -47,7 +47,7 @@ public class Dice {
 		
 		// no need to print statistics if it was never rolled
 		if(total == 0)
-			return "Dice has not been rolled yet.";
+			return "Dice has not been rolled yet.\n";
 		
 		String stats = "--Dice Statistics--";
 		for(int i = 0; i < rollStatistics.length; i++) {

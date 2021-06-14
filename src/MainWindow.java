@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MainWindow {
 
@@ -54,6 +55,10 @@ public class MainWindow {
 		frame.setBounds(100, 100, 399, 358);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		JLabel lblNewLabel = new JLabel("Coin Flipper");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		
 		JButton btnFlipCoin = new JButton("Flip Coin");
 		btnFlipCoin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -67,6 +72,21 @@ public class MainWindow {
 			public void actionPerformed(ActionEvent e) {
 				dice.roll();
 				JOptionPane.showMessageDialog(null, dice.getResult());
+			}
+		});
+		
+		JButton btnRollTwoDice = new JButton("Roll Two Dice");
+		btnRollTwoDice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String outputText = "Dice 1:\n";
+				dice.roll();
+				outputText += dice.getResult();
+				
+				outputText += "Dice 2:\n";
+				dice.roll();
+				outputText += dice.getResult();
+				
+				JOptionPane.showMessageDialog(null, outputText);
 			}
 		});
 		
@@ -88,25 +108,22 @@ public class MainWindow {
 			}
 		});
 		
-		JLabel lblNewLabel = new JLabel("Coin Flipper");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnQuit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnStatistics, GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+						.addComponent(btnRollTwoDice, GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+						.addComponent(btnRollDice, GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(2)
-							.addComponent(btnRollDice, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-							.addGap(2)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnFlipCoin, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-						.addComponent(btnStatistics, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
+								.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+								.addComponent(btnFlipCoin, GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)))
+						.addComponent(btnQuit, GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
 					.addGap(23))
 		);
 		groupLayout.setVerticalGroup(
@@ -119,10 +136,12 @@ public class MainWindow {
 					.addGap(18)
 					.addComponent(btnRollDice)
 					.addGap(18)
+					.addComponent(btnRollTwoDice)
+					.addGap(18)
 					.addComponent(btnStatistics)
 					.addGap(18)
 					.addComponent(btnQuit)
-					.addContainerGap(88, Short.MAX_VALUE))
+					.addContainerGap(74, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
